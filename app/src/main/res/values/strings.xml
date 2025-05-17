@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Life_renewed</string>
+<!--    <string name="warm_church_body"> We are a warm, Christ-centered community that embraces everyone with open arms. Whether you\'re just beginning to explore your faith, deepening your spiritual walk, or searching for a church home, you\'ll find a loving space here with us. Join us for engaging worship services designed to uplift your spirit, along with practical teachings that inspire your journey. Connect with others through our vibrant small groups, outreach programs, and service opportunities. No matter who you are or what stage of life you're in, there's a special place for you in our family. We invite you to come just as you are and experience the hope, healing, and purpose that arise from walking with Jesus. We can't wait to meet you!</string>-->
+    <string name="warm_church_title">A place where you can \n come broken &amp; leave \n whole.</string>
+    <string name="harvest_highlights">Harvest Highlights</string>
+    <string name="harvest_highlights_body">Mark your calendars and stay in the know - what\'s happening at Life ReNewed is too good to miss, so lean in and listen up!</string>
+    <string name="fellowship_services">Fellowship Services</string>
+    <string name="address">505 W Ridge Road Gary, IN 46408</string>
+    <string name="sunday_school">Sunday School | 9:00 am</string>
+    <string name="sunday_service">Sunday Morning Service | 10:45 am</string>
+    <string name="wednesday_service">Wednesday Night Bible Study | 7:00 pm</string>
+    <string name="church_bulletin">Church Bulletin</string>
+
+
+</resources>
