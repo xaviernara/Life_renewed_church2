@@ -10,6 +10,7 @@
     <string name="sunday_service">Sunday Morning Service | 10:45 am</string>
     <string name="wednesday_service">Wednesday Night Bible Study | 7:00 pm</string>
     <string name="church_bulletin">Church Bulletin</string>
+    <string name="home">Home</string>
 
 
 </resources>
