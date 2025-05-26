@@ -6,7 +6,12 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.life_renewed.view.About
+import com.example.life_renewed.view.Announcements
+import com.example.life_renewed.view.Bulletin
+import com.example.life_renewed.view.ConnectForm
+import com.example.life_renewed.view.Giving
 import com.example.life_renewed.view.Home
+import com.example.life_renewed.view.Splash
 import kotlinx.serialization.Serializable
 
 class NavGraph {
@@ -41,7 +46,25 @@ class NavGraph {
 //                }
 //            }
             composable(NavScreens.About.route){
-                About().AboutScreen()
+                About().AboutScreen(navController)
+            }
+            composable(NavScreens.Splash.route){
+                Splash().SplashScreen(navController,modifier)
+            }
+            composable(NavScreens.Announcements.route){
+                Announcements().AnnouncementsScreen(navController,modifier)
+            }
+            composable(NavScreens.ConnectForm.route){
+                ConnectForm().ConnectFormScreen(navController,modifier)
+            }
+//            composable(NavScreens.Map.route){
+//                Map().MapScreen()
+//            }
+            composable(NavScreens.Giving.route){
+                Giving().GivingScreen(navController,modifier)
+            }
+            composable(NavScreens.Bulletin.route){
+                Bulletin().BulletinScreen(navController,modifier)
             }
 
         }

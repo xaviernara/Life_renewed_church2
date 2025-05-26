@@ -116,6 +116,7 @@ class MainActivity : ComponentActivity() {
                 onClick = {
                     scope.launch {
                         drawerState.close()
+                        navController.navigate(NavScreens.Links.route)
                     }
                     // Navigate to Screen 1
                 }
@@ -126,6 +127,7 @@ class MainActivity : ComponentActivity() {
                 onClick = {
                     scope.launch {
                         drawerState.close()
+                        navController.navigate(NavScreens.ConnectForm.route)
                     }
                     // Navigate to Screen 1
                 }
@@ -182,13 +184,13 @@ class MainActivity : ComponentActivity() {
                 icon = { Icon(Icons.Filled.Menu, contentDescription = "Menu") },
                 label = { Text("Bulletin") },
                 selected = false,
-                onClick = { Log.d("BottomNavBar", "Menu clicked") }
+                onClick = { navController.navigate(NavScreens.Bulletin.route) }
             )
             NavigationBarItem(
                 icon = { Icon(Icons.Filled.Menu, contentDescription = "Menu") },
                 label = { Text("Location") },
                 selected = false,
-                onClick = { Log.d("BottomNavBar", "Menu clicked") }
+                onClick = { navController.navigate(NavScreens.Map.route) }
             )
             NavigationBarItem(
                 icon = {
@@ -207,13 +209,13 @@ class MainActivity : ComponentActivity() {
                 icon = { Icon(Icons.Filled.Menu, contentDescription = "Menu") },
                 label = { Text("Give") },
                 selected = false,
-                onClick = { Log.d("BottomNavBar", "Menu clicked") }
+                onClick = { navController.navigate(NavScreens.Giving.route) }
             )
             NavigationBarItem(
                 icon = { Icon(Icons.Filled.Menu, contentDescription = "Menu") },
                 label = { Text("Announcements") },
                 selected = false,
-                onClick = { Log.d("BottomNavBar", "Menu clicked") }
+                onClick = { navController.navigate(NavScreens.Announcements.route) }
             )
 
         }
