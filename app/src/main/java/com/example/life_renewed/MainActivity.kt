@@ -42,9 +42,11 @@ import androidx.navigation.compose.rememberNavController
 import com.example.life_renewed.navigation.NavGraph
 import com.example.life_renewed.navigation.NavScreens
 import com.example.life_renewed.ui.theme.Life_renewedTheme
+import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
+//@HiltAndroidApp
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

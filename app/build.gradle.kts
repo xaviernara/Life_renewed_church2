@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.ksp)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.kotlin.hilt)
 }
 
 android {
@@ -73,6 +74,13 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
 
     implementation("androidx.navigation:navigation-compose:2.7.7")
+
+    //dagger hilt dependencies
+    implementation("com.google.dagger:hilt-android:2.56.2")
+    ksp("com.google.dagger:hilt-android-compiler:2.56.2")
+
+    //hilt compose nav dependencies
+    implementation("androidx.hilt:hilt-navigation-fragment:1.0.0")
 
 
     //new type-safe compose navigation
