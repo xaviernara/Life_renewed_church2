@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
@@ -42,11 +43,12 @@ import androidx.navigation.compose.rememberNavController
 import com.example.life_renewed.navigation.NavGraph
 import com.example.life_renewed.navigation.NavScreens
 import com.example.life_renewed.ui.theme.Life_renewedTheme
+import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-//@HiltAndroidApp
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -189,7 +191,7 @@ class MainActivity : ComponentActivity() {
                 onClick = { navController.navigate(NavScreens.Bulletin.route) }
             )
             NavigationBarItem(
-                icon = { Icon(Icons.Filled.Menu, contentDescription = "Menu") },
+                icon = { Icon(Icons.Filled.LocationOn, contentDescription = "Menu") },
                 label = { Text("Location") },
                 selected = false,
                 onClick = { navController.navigate(NavScreens.Map.route) }

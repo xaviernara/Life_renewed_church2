@@ -11,6 +11,7 @@ import com.example.life_renewed.view.Bulletin
 import com.example.life_renewed.view.ConnectForm
 import com.example.life_renewed.view.Giving
 import com.example.life_renewed.view.Home
+import com.example.life_renewed.view.Location
 import com.example.life_renewed.view.Splash
 import kotlinx.serialization.Serializable
 
@@ -57,9 +58,9 @@ class NavGraph {
             composable(NavScreens.ConnectForm.route){
                 ConnectForm().ConnectFormScreen(navController,modifier)
             }
-//            composable(NavScreens.Map.route){
-//                Map().MapScreen()
-//            }
+            composable(NavScreens.Map.route){
+                Location().MapScreen(navController,modifier)
+            }
             composable(NavScreens.Giving.route){
                 Giving().GivingScreen(navController,modifier)
             }

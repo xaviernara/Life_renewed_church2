@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.life_renewed.R
+import com.example.life_renewed.navigation.NavScreens
 
 class Home {
 
@@ -48,7 +49,7 @@ class Home {
                 )
         ) {
             HomeImage()
-            HomeBodyInfo()
+            HomeBodyInfo(navController)
         }
 
     }
@@ -91,7 +92,7 @@ class Home {
 
 
     @Composable
-    fun HomeBodyInfo() {
+    fun HomeBodyInfo(navController: NavHostController) {
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier.padding(start = 10.dp, end = 10.dp, top = 24.dp)
@@ -114,18 +115,16 @@ class Home {
                         .padding(bottom = 10.dp)
                         .fillMaxWidth()
                 )
-//        Text(
-//            text = getString(LocalContext.current,R.string.warm_church_body),
-//            color = Color.Black,
-//            textAlign = TextAlign.Center,
-//            fontSize = TextUnit(value = 12f, type = TextUnitType.Sp),
-//        )
+
                 Text(
-                    text = " We are a warm, Christ-centered community that embraces everyone with open arms. Whether you\\'re just beginning to explore your faith, deepening your spiritual walk, or searching for a church home, you\\'ll find a loving space here with us. Join us for engaging worship services designed to uplift your spirit, along with practical teachings that inspire your journey. Connect with others through our vibrant small groups, outreach programs, and service opportunities. No matter who you are or what stage of life you're in, there's a special place for you in our family. We invite you to come just as you are and experience the hope, healing, and purpose that arise from walking with Jesus. We can't wait to meet you!",
+                    text = stringResource(R.string.warm_church_body),
                     color = Color.Black,
                     textAlign = TextAlign.Center,
-                    fontSize = TextUnit(value = 12f, type = TextUnitType.Sp),
-                    fontWeight = FontWeight.Normal
+                    fontSize = TextUnit(value = 18f, type = TextUnitType.Sp),
+                    fontWeight = FontWeight.Normal,
+                    modifier = Modifier
+                        .padding(bottom = 10.dp)
+                        .fillMaxWidth()
                 )
 
                 Text(
@@ -149,7 +148,7 @@ class Home {
                 )
 
                 Button(
-                    onClick = { Log.d("HomeImage", "Button clicked") },
+                    onClick = { navController.navigate(NavScreens.Announcements.route) },
                     shape = RoundedCornerShape(corner = CornerSize(20.dp)), // Applies a rounded corner shape to the button
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color.Black,

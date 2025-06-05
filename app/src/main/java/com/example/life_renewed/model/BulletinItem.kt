@@ -1,6 +1,11 @@
 package com.example.life_renewed.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "bulletin_items")
 data class BulletinItem(
+    @PrimaryKey(autoGenerate = true)
     val id: Int, // Unique identifier
     val title: String, // Title of the bulletin items,
     val shortDescription: String? = null, // Optional short description,
