@@ -47,7 +47,7 @@ class NavGraph {
 //                }
 //            }
             composable(NavScreens.About.route){
-                About().AboutScreen(navController)
+                About().AboutScreen()
             }
             composable(NavScreens.Splash.route){
                 Splash().SplashScreen(navController,modifier)

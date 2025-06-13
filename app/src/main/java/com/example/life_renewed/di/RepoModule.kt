@@ -1,6 +1,7 @@
 package com.example.life_renewed.di
 
 import com.example.life_renewed.repo.LifeRenewRepoImpl
+import com.example.life_renewed.repo.LifeRenewRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -14,6 +15,6 @@ abstract class RepoModule {
 
     @Binds
     @Singleton
-    abstract fun provideRepo(impl: LifeRenewRepoImpl): LifeRenewRepoImpl
+    abstract fun provideRepo(impl: LifeRenewRepoImpl): LifeRenewRepository
 
 }

@@ -11,26 +11,26 @@
     <string name="wednesday_service">Wednesday Night Bible Study | 7:00 pm</string>
     <string name="church_bulletin">Church Bulletin</string>
     <string name="home">Home</string>
-    <string name="church_vision">We see a multi-cultural, Multi-generational, passionate, loving community of believers that believe Jesus Christ is who the bible says He is. So that each individual will experience growth and enhancements for the body of Christ.</string>
+    <string name="church_vision">We see a multi-cultural, Multi-generational,passionate,loving community of believers that believe Jesus Christ is who the bible says He is. So that each individual will experience growth and enhancements for the body of Christ.</string>
     <string name="church_mission">To spread the Gospel in our community by reaching out in love and changing lives through the Word of God. </string>
 
     <array name="church_services">
-        <item name = "service_1" >Sunday School 9:00 AM</item>
+        <item name = "service_1">Sunday School 9:00 AM</item>
         <item name = "service_2">Sunday\'s Corporate Prayer 10:30 AM</item>
         <item name = "service_3">Sunday Morning Worship 10:45 AM</item>
         <item name = "service_4">Stir Night Service (2nd &amp; 4th Sunday) 3:00 PM</item>
-        <item name = "service_5"> Wednesday Night Bible Service 7:00 PM</item>
+        <item name = "service_5">Wednesday Night Bible Service 7:00 PM</item>
     </array>
 
     <array name="church_concretes">
-        <item name = "concrete_1"><p><b>We believe</b> the Bible to be the inspired and only infallible written Word of God.</p></item>
-        <item name = "concrete_2"><p><b>We believe</b> that there is only One God, eternally existent in three persons: God the Father, God the Son and, God the Holy Spirit.</p> </item>
-        <item name = "concrete_3"><p><b>We believe</b> in the blessed Hope, which is the rapture of the Church of God, which is in Christ, at His return.</p> </item>
-        <item name = "concrete_4"><p><b>We believe</b> that the only means of being cleansed from sin is through repentance and faith in the precious Blood of Jesus Christ.</p> </item>
-        <item name = "concrete_5"><p><b>We believe</b> that regeneration by the Holy Ghost is absolutely essential for personal salvation.</p> </item>
-        <item name = "concrete_6"><p><b>We believe</b> that the redemptive work of Christ on the Cross provides healing for the human body in answer to believing prayer.</p> </item>
-        <item name = "concrete_7"><p><b>We believe</b> that the Baptism of the Holy Spirit, according to Acts 2:4, is given to believers who ask for it.</p> </item>
-        <item name = "concrete_8"><p><b>We believe</b> in the sanctifying power of the Holy Spirit, by whose indwelling the Christian is enabled to live a holy and separated life in the present world.</p></item>
+        <item name = "concrete_1">We believe the Bible to be the inspired and only infallible written Word of God.</item>
+        <item name = "concrete_2">We believe that there is only One God, eternally existent in three persons: God the Father, God the Son and, God the Holy Spirit. </item>
+        <item name = "concrete_3">We believe in the blessed Hope, which is the rapture of the Church of God, which is in Christ, at His return. </item>
+        <item name = "concrete_4">We believe that the only means of being cleansed from sin is through repentance and faith in the precious Blood of Jesus Christ. </item>
+        <item name = "concrete_5">We believe that regeneration by the Holy Ghost is absolutely essential for personal salvation. </item>
+        <item name = "concrete_6">We believe that the redemptive work of Christ on the Cross provides healing for the human body in answer to believing prayer. </item>
+        <item name = "concrete_7">We believe that the Baptism of the Holy Spirit, according to Acts 2:4, is given to believers who ask for it. </item>
+        <item name = "concrete_8">We believe in the sanctifying power of the Holy Spirit, by whose indwelling the Christian is enabled to live a holy and separated life in the present world.</item>
     </array>
 
     <array name="about_screen_card_titles">

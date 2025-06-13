@@ -43,6 +43,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.life_renewed.navigation.NavGraph
 import com.example.life_renewed.navigation.NavScreens
 import com.example.life_renewed.ui.theme.Life_renewedTheme
+import com.example.life_renewed.viewmodel.LifeRenewViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
@@ -58,6 +59,7 @@ class MainActivity : ComponentActivity() {
             val scope = rememberCoroutineScope()
             val scollState = rememberScrollState()
             val navController = rememberNavController()
+//            val viewModel : LifeRenewViewModel = hiltViewModel()
 
 
 

@@ -2,6 +2,7 @@ package com.example.life_renewed.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.life_renewed.repo.dao.LifeRenewDAO
 import com.example.life_renewed.repo.db.LifeRenewDatabase
 import dagger.Module
 import dagger.Provides
@@ -16,9 +17,9 @@ object DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(@ApplicationContext applicationContext: Context): LifeRenewDatabase {
+    fun provideDatabase(@ApplicationContext context: Context): LifeRenewDatabase {
         return Room.databaseBuilder(
-            applicationContext,
+            context,
             LifeRenewDatabase::class.java,
             "life_renew_database"
         ).build()
@@ -26,6 +27,9 @@ object DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideDao(db: LifeRenewDatabase) = db.lifeRenewDao()
+    fun provideDao(db: LifeRenewDatabase): LifeRenewDAO {
+        return db.lifeRenewDao()
+    }
+
 
 }

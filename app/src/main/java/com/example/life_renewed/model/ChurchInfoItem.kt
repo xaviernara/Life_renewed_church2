@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "bulletin_items")
-data class BulletinItem(
+data class ChurchInfoItem(
     @PrimaryKey(autoGenerate = true)
     val id: Int, // Unique identifier
     val title: String, // Title of the bulletin items,

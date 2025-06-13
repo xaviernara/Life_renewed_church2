@@ -15,26 +15,26 @@ data class AnnouncementsItem(
     @ColumnInfo(name = "description")
     var description: String?,
 
-    @ColumnInfo(name = "date")
-    var date: String?,
+//    @ColumnInfo(name = "date")
+//    var date: String?,
 
-    @ColumnInfo(name = "wedding_anniversaries")
-    var weddingAnniversaries: List<String>?,
+//    @ColumnInfo(name = "wedding_anniversaries")
+//    var weddingAnniversaries: List<String>?,
 
-    @ColumnInfo(name = "devotional")
-    var devotional: String?,
+//    @ColumnInfo(name = "devotional")
+//    var devotional: String?,
 
-    @ColumnInfo(name = "birthdays")
-    var birthdays : List<String>?,
+//    @ColumnInfo(name = "birthdays")
+//    var birthdays : List<String>?,
+//
+//    @ColumnInfo(name = "prayers")
+//    var prayers : List<String>?,
 
-    @ColumnInfo(name = "prayers")
-    var prayers : List<String>?,
-
-    @ColumnInfo(name = "church_profile_info")
-    var churchProfileInfo : String?,
-
-    @ColumnInfo(name = "media_team_description")
-    var mediaTeamDescription : String?,
+//    @ColumnInfo(name = "church_profile_info")
+//    var churchProfileInfo : String?,
+//
+//    @ColumnInfo(name = "media_team_description")
+//    var mediaTeamDescription : String?,
 
 
 
