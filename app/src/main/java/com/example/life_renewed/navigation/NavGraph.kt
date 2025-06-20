@@ -12,6 +12,7 @@ import com.example.life_renewed.view.ConnectForm
 import com.example.life_renewed.view.Giving
 import com.example.life_renewed.view.Home
 import com.example.life_renewed.view.Location
+import com.example.life_renewed.view.Onboarding
 import com.example.life_renewed.view.Splash
 import kotlinx.serialization.Serializable
 
@@ -20,7 +21,7 @@ class NavGraph {
     @Composable
     fun RootNavGraph(navController: NavHostController, modifier: Modifier){
 
-        NavHost(navController = navController, startDestination = NavScreens.Home.route){
+        NavHost(navController = navController, startDestination = NavScreens.Splash.route){
 //            composable<Home>{
 ////                navController.navigate(NavScreens.Home.route)
 ////                navController.navigate(About2(id = 1, name = "Xavier"))
@@ -68,6 +69,9 @@ class NavGraph {
                 Bulletin().BulletinScreen(navController,modifier)
             }
 
+            composable(NavScreens.Onboarding.route) {
+                Onboarding().OnboardingScreen(navController)
+            }
         }
     }
 

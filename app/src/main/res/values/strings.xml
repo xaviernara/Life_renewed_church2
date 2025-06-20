@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Life_renewed</string>
+    <string name="church_name">Life ReNewed Harvest Church</string>
     <string name="warm_church_body">We are a warm, Christ-centered community that embraces everyone with open arms. Whether you\'re just beginning to explore your faith, deepening your spiritual walk, or searching for a church home, you\'ll find a loving space here with us. Join us for engaging worship services designed to uplift your spirit, along with practical teachings that inspire your journey. Connect with others through our vibrant small groups, outreach programs, and service opportunities. No matter who you are or what stage of life you\'re in, there\'s a special place for you in our family. We invite you to come just as you are and experience the hope, healing, and purpose that arise from walking with Jesus. We can\'t wait to meet you!</string>
     <string name="warm_church_title">A place where you can \n come broken &amp; leave \n whole.</string>
     <string name="harvest_highlights">Harvest Highlights</string>
@@ -13,6 +14,11 @@
     <string name="home">Home</string>
     <string name="church_vision">We see a multi-cultural, Multi-generational,passionate,loving community of believers that believe Jesus Christ is who the bible says He is. So that each individual will experience growth and enhancements for the body of Christ.</string>
     <string name="church_mission">To spread the Gospel in our community by reaching out in love and changing lives through the Word of God. </string>
+    <string name="giving_quote">Partner with us in giving — whether online, in person, or through recurring gifts, there are many ways to sow into what God is doing through our church!</string>
+    <string name="cashapp">CashApp</string>
+    <string name="givelify">Givelify</string>
+    <string name="life_renewed_social_media">Life ReNewed Social Media</string>
+
 
     <array name="church_services">
         <item name = "service_1">Sunday School 9:00 AM</item>

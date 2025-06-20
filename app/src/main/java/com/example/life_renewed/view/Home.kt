@@ -47,14 +47,14 @@ class Home {
                     state = scollState
                 )
         ) {
-            HomeBanner()
+            HomeBanner(navController)
             HomeBodyInfo(navController)
         }
 
     }
 
     @Composable
-    fun HomeBanner(modifier: Modifier = Modifier){
+    fun HomeBanner(navController: NavHostController){
         Box(
             modifier = Modifier.fillMaxWidth(),
             contentAlignment = Alignment.Center
@@ -70,13 +70,13 @@ class Home {
                 // ContentScale.FillBounds will stretch
             )
             Button(
-                onClick = { Log.d("HomeImage", "Button clicked") },
+                onClick = { navController.navigate(NavScreens.About.route) },
                 shape = RoundedCornerShape(corner = CornerSize(20.dp)), // Applies a rounded corner shape to the button
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.Black,
                     contentColor = Color.White
                 ),
-                modifier = modifier
+                modifier = Modifier
                     .align(Alignment.BottomCenter) // Align the button to the bottom center of the Box
                     .fillMaxWidth(0.4f) // Make the button fill 40% of the Box width
                     .padding(bottom = 15.dp), // Add some padding from the bottom edge

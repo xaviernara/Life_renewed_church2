@@ -52,6 +52,7 @@ import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import com.example.life_renewed.R
 import com.example.life_renewed.model.ChurchInfoItem
+import com.example.life_renewed.utils.Utils
 import kotlinx.coroutines.launch
 import kotlin.text.contains
 import kotlin.text.indexOf
@@ -312,7 +313,8 @@ class About {
                     contentPadding = PaddingValues(vertical = 8.dp) // Padding for the content within the grid (top and bottom)
                 ) {
                     item{
-                        ChurchInfoBanner()
+                        Utils.TopBanner()
+//                        ChurchInfoBanner()
                     }
                     items(
                         bulletinItems.size
@@ -479,7 +481,7 @@ class About {
                                     Text(
                                         text = getDescriptionText(text = textItem),
                                         color = Color.White,
-                                        textAlign = TextAlign.Center,
+                                        textAlign = if(descriptionArray.size == 8) TextAlign.Start else TextAlign.Center,
                                     )
                                 }
                             }

@@ -5,8 +5,15 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
@@ -31,21 +38,24 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.life_renewed.navigation.NavGraph
 import com.example.life_renewed.navigation.NavScreens
 import com.example.life_renewed.ui.theme.Life_renewedTheme
-import com.example.life_renewed.viewmodel.LifeRenewViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -62,7 +72,6 @@ class MainActivity : ComponentActivity() {
 //            val viewModel : LifeRenewViewModel = hiltViewModel()
 
 
-
             Life_renewedTheme {
                 ModalNavigationDrawer(
                     drawerState = drawerState,
@@ -76,23 +85,40 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Scaffold(
                         topBar = {
-                            TopNavBar(
-                                scope = scope,
-                                drawerState = drawerState,
-                                navController = navController
-                            )
+                            if (showScaffold(navController = navController)) {
+                                TopNavBar(
+                                    scope = scope,
+                                    drawerState = drawerState,
+                                    navController = navController
+                                )
+                            }
                         },
-                        bottomBar = { BottomNavBar(navController) },
+                        bottomBar = {
+                            if (showScaffold(navController = navController)) {
+                                BottomNavBar(navController)
+                            }
+                        },
                         modifier = Modifier.fillMaxSize()
                     ) { innerPadding ->
 
-                        NavGraph().RootNavGraph(navController = navController, modifier = Modifier.padding(innerPadding))
+                        NavGraph().RootNavGraph(
+                            navController = navController,
+                            modifier = Modifier.padding(innerPadding)
+                        )
 
                     }
 
                 }
             }
         }
+    }
+
+    @Composable
+    fun showScaffold(navController: NavHostController): Boolean {
+        val navBackStackEntry = navController.currentBackStackEntryAsState()
+        val currentRoute = navBackStackEntry.value?.destination?.route
+        // The Scaffold should be shown if the current route is NOT Onboarding AND NOT Splash.
+        return currentRoute != NavScreens.Onboarding.route && currentRoute != NavScreens.Splash.route
     }
 
     @Composable
@@ -103,7 +129,11 @@ class MainActivity : ComponentActivity() {
     ) {
         // Content of the navigation drawer
         ModalDrawerSheet {
-            Text("Drawer Title", modifier = Modifier.padding(16.dp))
+            Image(
+                painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                contentDescription = "Logo",
+                modifier = Modifier.size(20.dp)
+            )
             HorizontalDivider()
             NavigationDrawerItem(
                 label = { Text("About") },
@@ -138,7 +168,59 @@ class MainActivity : ComponentActivity() {
                     // Navigate to Screen 1
                 }
             )
+
+            DrawerFooter()
         }
+    }
+
+    @Composable
+    fun DrawerFooter() {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Bottom,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(bottom = 10.dp)
+        ) {
+            Spacer(modifier = Modifier.height(48.dp))
+            Text(
+                text = stringResource(R.string.life_renewed_social_media),
+                fontStyle = FontStyle.Italic,
+                fontWeight = FontWeight.SemiBold,
+            )
+
+            LazyRow {
+                item {
+                    IconButton(onClick = { }) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_facebook_foreground),
+                            modifier = Modifier.size(25.dp),
+                            contentDescription = "facebook"
+                        )
+                    }
+                    Spacer(modifier = Modifier.size(12.dp))
+
+                    IconButton(onClick = { }) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_x_twitter_foreground),
+                            modifier = Modifier.size(40.dp),
+                            contentDescription = "twitter"
+                        )
+                    }
+                    Spacer(modifier = Modifier.size(12.dp))
+
+                    IconButton(onClick = { }) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_youtube_foreground),
+                            modifier = Modifier.size(40.dp),
+                            contentDescription = "youtube"
+                        )
+                    }
+                }
+            }
+
+        }
+
     }
 
     @OptIn(ExperimentalMaterial3Api::class)
@@ -151,7 +233,7 @@ class MainActivity : ComponentActivity() {
         TopAppBar(
             title = {
                 Text(
-                    text = "Life ReNewed Harvest Church",
+                    text = stringResource(R.string.church_name),
                     color = Color.White,
                     textAlign = TextAlign.Center,
                     fontSize = TextUnit(value = 12f, type = TextUnitType.Sp)
