@@ -1,8 +1,6 @@
 package com.example.life_renewed.view
 
 import android.content.Intent
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
-import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.scrollable
@@ -34,7 +32,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
-import androidx.core.content.ContextCompat.startActivity
 import androidx.core.net.toUri
 import androidx.navigation.NavHostController
 import com.example.life_renewed.R
@@ -84,11 +81,11 @@ class Giving {
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth().padding(bottom = 20.dp)
                 ) {
-                    var url = "https://www.givelify.com/donate/life-renewed-harvest-ministries-gary-in-2j7wy5MzMzNTg=/donation/amount"
-                    NavToWebpageButton(url = url, buttonText = R.string.givelify)
+                    val givelifyUrl = "https://www.givelify.com/donate/life-renewed-harvest-ministries-gary-in-2j7wy5MzMzNTg=/donation/amount"
+                    NavToWebpageButton(url = givelifyUrl, buttonText = R.string.givelify)
 
-                    url = "https://cash.app/LifeReNewedHarvest"
-                    NavToWebpageButton(url = url, buttonText = R.string.cashapp)
+                    val cashAppUrl = "https://cash.app/LifeReNewedHarvest"
+                    NavToWebpageButton(url = cashAppUrl, buttonText = R.string.cashApp)
                 }
             }
         }

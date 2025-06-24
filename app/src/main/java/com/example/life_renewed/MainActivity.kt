@@ -143,7 +143,6 @@ class MainActivity : ComponentActivity() {
                         drawerState.close()
                     }
                     navController.navigate(NavScreens.About.route)
-                    // Navigate to Screen 1
                 }
             )
             NavigationDrawerItem(
@@ -154,7 +153,6 @@ class MainActivity : ComponentActivity() {
                         drawerState.close()
                         navController.navigate(NavScreens.Links.route)
                     }
-                    // Navigate to Screen 1
                 }
             )
             NavigationDrawerItem(
@@ -165,7 +163,6 @@ class MainActivity : ComponentActivity() {
                         drawerState.close()
                         navController.navigate(NavScreens.ConnectForm.route)
                     }
-                    // Navigate to Screen 1
                 }
             )
 

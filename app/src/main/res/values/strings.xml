@@ -15,9 +15,11 @@
     <string name="church_vision">We see a multi-cultural, Multi-generational,passionate,loving community of believers that believe Jesus Christ is who the bible says He is. So that each individual will experience growth and enhancements for the body of Christ.</string>
     <string name="church_mission">To spread the Gospel in our community by reaching out in love and changing lives through the Word of God. </string>
     <string name="giving_quote">Partner with us in giving — whether online, in person, or through recurring gifts, there are many ways to sow into what God is doing through our church!</string>
-    <string name="cashapp">CashApp</string>
+    <string name="cashApp">CashApp</string>
     <string name="givelify">Givelify</string>
     <string name="life_renewed_social_media">Life ReNewed Social Media</string>
+    <string name="welcome_to_life_renewed_harvest_ministries">Welcome to Life ReNewed Harvest Ministries</string>
+    <string name="please_sign_in">Please sign in:</string>
 
 
     <array name="church_services">
