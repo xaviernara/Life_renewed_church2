@@ -1,5 +1,7 @@
 package com.example.life_renewed.navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -12,14 +14,18 @@ import com.example.life_renewed.view.ConnectForm
 import com.example.life_renewed.view.Giving
 import com.example.life_renewed.view.Home
 import com.example.life_renewed.view.Location
+import com.example.life_renewed.view.Notes
+import com.example.life_renewed.view.NotesDetails
 import com.example.life_renewed.view.Onboarding
 import com.example.life_renewed.view.Splash
+import com.example.life_renewed.viewmodel.LifeRenewViewModel
 import kotlinx.serialization.Serializable
 
 class NavGraph {
 
+    @RequiresApi(Build.VERSION_CODES.O)
     @Composable
-    fun RootNavGraph(navController: NavHostController, modifier: Modifier){
+    fun RootNavGraph(navController: NavHostController, modifier: Modifier, viewModel: LifeRenewViewModel){
 
         NavHost(navController = navController, startDestination = NavScreens.Splash.route){
 //            composable<Home>{
@@ -71,6 +77,12 @@ class NavGraph {
 
             composable(NavScreens.Onboarding.route) {
                 Onboarding().OnboardingScreen(navController)
+            }
+            composable(NavScreens.Notes.route) {
+                Notes().NotesScreen(navController = navController,viewModel = viewModel, modifier = modifier)
+            }
+            composable(NavScreens.NoteDetail.route) {
+                NotesDetails().NoteDetailScreen(navController = navController,viewModel = viewModel, modifier = modifier)
             }
         }
     }

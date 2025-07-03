@@ -1,4 +1,4 @@
-package com.example.life_renewed.api
+package com.example.life_renewed.network
 
 import com.example.life_renewed.model.AnnouncementsItem
 import retrofit2.Response

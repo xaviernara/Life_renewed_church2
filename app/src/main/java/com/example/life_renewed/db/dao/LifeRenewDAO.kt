@@ -1,4 +1,4 @@
-package com.example.life_renewed.repo.dao
+package com.example.life_renewed.db.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -19,14 +19,14 @@ interface LifeRenewDAO {
 
 
 
-    @Query("SELECT * FROM announcements_table ")
-    fun getAnnouncements(): List<AnnouncementsItem>
-
-    @Insert
-    fun insertAnnouncement(vararg announcementsItem: AnnouncementsItem)
-
-    @Query("DELETE FROM announcements_table")
-    fun deleteAnnouncements()
+//    @Query("SELECT * FROM announcements_table ")
+//    fun getAnnouncements(): List<AnnouncementsItem>
+//
+//    @Insert
+//    fun insertAnnouncement(vararg announcementsItem: AnnouncementsItem)
+//
+//    @Query("DELETE FROM announcements_table")
+//    fun deleteAnnouncements()
 
 
 

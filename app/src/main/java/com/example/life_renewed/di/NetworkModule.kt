@@ -1,6 +1,6 @@
 package com.example.life_renewed.di
 
-import com.example.life_renewed.api.LifeRenewApi
+import com.example.life_renewed.network.LifeRenewApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

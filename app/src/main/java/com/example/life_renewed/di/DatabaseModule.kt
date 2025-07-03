@@ -2,8 +2,13 @@ package com.example.life_renewed.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.life_renewed.repo.dao.LifeRenewDAO
-import com.example.life_renewed.repo.db.LifeRenewDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
+import com.example.life_renewed.db.dao.LifeRenewDAO
+import com.example.life_renewed.db.LifeRenewDatabase
+import com.example.life_renewed.db.Migrations
+import com.example.life_renewed.db.dao.NotesDAO
+import com.example.life_renewed.utils.Utils
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,21 +20,21 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
 
-    @Provides
+        @Provides
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): LifeRenewDatabase {
+
         return Room.databaseBuilder(
             context,
             LifeRenewDatabase::class.java,
-            "life_renew_database"
-        ).build()
+            name ="life_renew_database"
+        ).addMigrations(Migrations.getMigrations()).build()
     }
 
     @Provides
     @Singleton
-    fun provideDao(db: LifeRenewDatabase): LifeRenewDAO {
-        return db.lifeRenewDao()
+    fun provideDao(db: LifeRenewDatabase): NotesDAO {
+        return db.notesDao()
     }
-
 
 }

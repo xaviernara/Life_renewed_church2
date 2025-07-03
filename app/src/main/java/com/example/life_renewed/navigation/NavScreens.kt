@@ -14,4 +14,9 @@ sealed class NavScreens(val route: String, val title: String) {
     data object Splash : NavScreens("splash_screen", "Splash")
     data object Links : NavScreens("links_screen", "Links")
     data object Onboarding : NavScreens("onboarding_screen", "Onboarding")
+    data object Notes : NavScreens("notes_screen", "Notes")
+    data object NoteDetail : NavScreens("note_detail_screen", "Note Detail")
+
+
+
 }

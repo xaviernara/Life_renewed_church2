@@ -20,6 +20,12 @@
     <string name="life_renewed_social_media">Life ReNewed Social Media</string>
     <string name="welcome_to_life_renewed_harvest_ministries">Welcome to Life ReNewed Harvest Ministries</string>
     <string name="please_sign_in">Please sign in:</string>
+    <string name="connect">Connect</string>
+    <string name="links">Links</string>
+    <string name="about">About</string>
+    <string name="church_notes">Church Notes</string>
+    <string name="add_notes">Add Notes</string>
+    <string name="note_saved">Note Saved</string>
 
 
     <array name="church_services">

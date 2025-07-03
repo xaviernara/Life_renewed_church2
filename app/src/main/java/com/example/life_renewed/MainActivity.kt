@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,7 +15,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.LocationOn
@@ -37,6 +37,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -50,11 +51,12 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.life_renewed.navigation.NavGraph
 import com.example.life_renewed.navigation.NavScreens
 import com.example.life_renewed.ui.theme.Life_renewedTheme
+import com.example.life_renewed.utils.Utils
+import com.example.life_renewed.viewmodel.LifeRenewViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -67,9 +69,12 @@ class MainActivity : ComponentActivity() {
         setContent {
             val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
             val scope = rememberCoroutineScope()
-            val scollState = rememberScrollState()
+//            val scrollState = rememberScrollState()
             val navController = rememberNavController()
-//            val viewModel : LifeRenewViewModel = hiltViewModel()
+            val viewModel: LifeRenewViewModel by viewModels()
+
+            var allNotes = viewModel.allNotes.collectAsState()
+            val note = viewModel.note.collectAsState()
 
 
             Life_renewedTheme {
@@ -85,17 +90,20 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Scaffold(
                         topBar = {
+                            val showNotesTitle = showNotesTitle(navController = navController) && note.value.sermonTitle.isNullOrEmpty().not()
+                            val notesTitle = (note.value.sermonTitle ?:"") + ( note.value.date ?: "")
                             if (showScaffold(navController = navController)) {
                                 TopNavBar(
                                     scope = scope,
                                     drawerState = drawerState,
-                                    navController = navController
+                                    title = if (showNotesTitle) notesTitle else stringResource(R.string.church_name)
                                 )
                             }
                         },
                         bottomBar = {
                             if (showScaffold(navController = navController)) {
                                 BottomNavBar(navController)
+
                             }
                         },
                         modifier = Modifier.fillMaxSize()
@@ -103,22 +111,29 @@ class MainActivity : ComponentActivity() {
 
                         NavGraph().RootNavGraph(
                             navController = navController,
-                            modifier = Modifier.padding(innerPadding)
+                            modifier = Modifier.padding(innerPadding),
+                            viewModel = viewModel
                         )
 
                     }
-
                 }
             }
         }
     }
 
+
     @Composable
     fun showScaffold(navController: NavHostController): Boolean {
-        val navBackStackEntry = navController.currentBackStackEntryAsState()
-        val currentRoute = navBackStackEntry.value?.destination?.route
+        val currentRoute = Utils.getCurrentRoute(navController)
         // The Scaffold should be shown if the current route is NOT Onboarding AND NOT Splash.
         return currentRoute != NavScreens.Onboarding.route && currentRoute != NavScreens.Splash.route
+    }
+
+    @Composable
+    fun showNotesTitle(navController: NavHostController): Boolean {
+        val currentRoute = Utils.getCurrentRoute(navController)
+        // The Scaffold should be shown if the current route is Notes Details screen.
+        return currentRoute == NavScreens.NoteDetail.route
     }
 
     @Composable
@@ -130,13 +145,13 @@ class MainActivity : ComponentActivity() {
         // Content of the navigation drawer
         ModalDrawerSheet {
             Image(
-                painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                painter = painterResource(id = R.drawable.ic_launcher_background),
                 contentDescription = "Logo",
                 modifier = Modifier.size(20.dp)
             )
             HorizontalDivider()
             NavigationDrawerItem(
-                label = { Text("About") },
+                label = { Text(stringResource(R.string.about)) },
                 selected = false,
                 onClick = {
                     scope.launch {
@@ -146,7 +161,7 @@ class MainActivity : ComponentActivity() {
                 }
             )
             NavigationDrawerItem(
-                label = { Text("Links") },
+                label = { Text(stringResource(R.string.links)) },
                 selected = false,
                 onClick = {
                     scope.launch {
@@ -156,12 +171,22 @@ class MainActivity : ComponentActivity() {
                 }
             )
             NavigationDrawerItem(
-                label = { Text("Connect") },
+                label = { Text(stringResource(R.string.connect)) },
                 selected = false,
                 onClick = {
                     scope.launch {
                         drawerState.close()
                         navController.navigate(NavScreens.ConnectForm.route)
+                    }
+                }
+            )
+            NavigationDrawerItem(
+                label = { Text(stringResource(R.string.church_notes)) },
+                selected = false,
+                onClick = {
+                    scope.launch {
+                        drawerState.close()
+                        navController.navigate(NavScreens.Notes.route)
                     }
                 }
             )
@@ -225,12 +250,12 @@ class MainActivity : ComponentActivity() {
     fun TopNavBar(
         scope: CoroutineScope,
         drawerState: DrawerState,
-        navController: NavHostController
+        title: String
     ) {
         TopAppBar(
             title = {
                 Text(
-                    text = stringResource(R.string.church_name),
+                    text = title,
                     color = Color.White,
                     textAlign = TextAlign.Center,
                     fontSize = TextUnit(value = 12f, type = TextUnitType.Sp)
@@ -238,7 +263,6 @@ class MainActivity : ComponentActivity() {
             },
             colors = TopAppBarDefaults.topAppBarColors(Color.Black),
             navigationIcon = {
-//                Icon(Icons.Filled.Menu, contentDescription = "Menu", tint = Color.White)
                 IconButton(
                     onClick = {
                         Log.d("TopNavBar", "Navigation icon clicked")
