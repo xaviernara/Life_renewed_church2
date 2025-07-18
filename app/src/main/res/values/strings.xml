@@ -26,6 +26,8 @@
     <string name="church_notes">Church Notes</string>
     <string name="add_notes">Add Notes</string>
     <string name="note_saved">Note Saved</string>
+    <string name="edit_note">Edit Note</string>
+    <string name="delete_note">Delete Note</string>
 
 
     <array name="church_services">

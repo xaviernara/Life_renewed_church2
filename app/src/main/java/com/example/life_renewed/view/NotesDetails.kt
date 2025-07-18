@@ -106,8 +106,7 @@ class NotesDetails {
                     )
                     viewModel?.insertNotes(notesObject)
 //                    navController.navigateUp()
-                    Toast.makeText(context,
-                        context.getString(R.string.note_saved), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, context.getString(R.string.note_saved), Toast.LENGTH_SHORT).show()
                 },
                 colors = ButtonDefaults.buttonColors(Color.Green),
                 modifier = Modifier.padding(vertical = 16.dp)
