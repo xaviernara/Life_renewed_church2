@@ -51,7 +51,14 @@ object Migrations {
         }
     }
 
-    fun getMigrations(): Migration {
-        return MIGRATION_1_2
+    private val MIGRATION_2_3 = object : Migration(2, 3) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            // Add the new column to the existing table
+            db.execSQL("ALTER TABLE notes_table ADD COLUMN timeStamp TEXT")
+        }
+    }
+
+    fun getMigrations(): Array<Migration> {
+        return arrayOf(MIGRATION_1_2, MIGRATION_2_3)
     }
 }

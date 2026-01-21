@@ -26,8 +26,15 @@
     <string name="church_notes">Church Notes</string>
     <string name="add_notes">Add Notes</string>
     <string name="note_saved">Note Saved</string>
+    <string name="note_empty">Note Is Empty, Please Add A Note</string>
     <string name="edit_note">Edit Note</string>
     <string name="delete_note">Delete Note</string>
+    <string name="save_note">Save Note</string>
+    <string name="description">Description</string>
+    <string name="sermon_title">Sermon Title</string>
+    <string name="series_title">Series Title</string>
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
 
 
     <array name="church_services">

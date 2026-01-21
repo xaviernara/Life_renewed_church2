@@ -7,7 +7,7 @@ import com.example.life_renewed.db.dao.LifeRenewDAO
 import com.example.life_renewed.db.dao.NotesDAO
 import com.example.life_renewed.model.NotesObject
 
-@Database(entities = [NotesObject::class], version = 2, exportSchema = false)
+@Database(entities = [NotesObject::class], version = 3, exportSchema = false)
 abstract class LifeRenewDatabase : RoomDatabase() {
 
     abstract fun lifeRenewDao(): LifeRenewDAO

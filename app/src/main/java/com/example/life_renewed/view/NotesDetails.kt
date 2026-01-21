@@ -22,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -45,6 +46,7 @@ class NotesDetails {
         var title  by remember { mutableStateOf("") }
         var date by remember { mutableStateOf(Utils.getCurrentDate()) }
         val context = LocalContext.current
+        val timeStamp by remember { mutableStateOf(Utils.getCurrentTime()) }
 
         Column(
             verticalArrangement = Arrangement.SpaceEvenly,
@@ -57,7 +59,7 @@ class NotesDetails {
                 onValueChange = { text->
                     title = text
                 },
-                modifier = Modifier.padding(vertical = 10.dp),
+                modifier = Modifier.padding(vertical = 8.dp),
                 shape = RoundedCornerShape(
                     topStart = 12.dp,
                     topEnd = 12.dp,
@@ -74,7 +76,7 @@ class NotesDetails {
             )
 
             TextField(
-                label = { Text("Description") },
+                label = { Text(stringResource(R.string.description)) },
                 value = description,
                 onValueChange = { text ->
                     description = text
@@ -99,19 +101,25 @@ class NotesDetails {
 
             Button(
                 onClick = {
-                    var notesObject = NotesObject(
+                    val notesObject = NotesObject(
                         sermonTitle = title,
                         description = description,
-                        date = date.toString()
+                        date = date.toString(),
+                        timeStamp = timeStamp.toString()
                     )
-                    viewModel?.insertNotes(notesObject)
+                    if(description.isEmpty()){
+                        Toast.makeText(context, context.getString(R.string.note_empty), Toast.LENGTH_SHORT).show()
+                    }else{
+                        viewModel?.insertNotes(notesObject)
+                        Toast.makeText(context, context.getString(R.string.note_saved), Toast.LENGTH_SHORT).show()
+                    }
 //                    navController.navigateUp()
-                    Toast.makeText(context, context.getString(R.string.note_saved), Toast.LENGTH_SHORT).show()
+
                 },
                 colors = ButtonDefaults.buttonColors(Color.Green),
                 modifier = Modifier.padding(vertical = 16.dp)
             ){
-                Text(text = "Save Note")
+                Text(text = stringResource(R.string.save_note))
             }
         }
     }

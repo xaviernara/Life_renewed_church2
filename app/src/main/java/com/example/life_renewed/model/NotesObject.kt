@@ -19,8 +19,10 @@ data class NotesObject @RequiresApi(Build.VERSION_CODES.O) constructor(
 
     @ColumnInfo(name = "seriesTitle")
     var seriesTitle : String? = null,
-//    var date : String = Utils.getCurrentDate().toString()
 
     @ColumnInfo(name = "date")
-    var date : String? = null
+    var date : String? = null,
+
+    @ColumnInfo(name = "timeStamp")
+    var timeStamp : String? = null
 )

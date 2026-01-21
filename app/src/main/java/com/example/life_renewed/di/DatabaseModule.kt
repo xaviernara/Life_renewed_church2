@@ -28,7 +28,7 @@ object DatabaseModule {
             context,
             LifeRenewDatabase::class.java,
             name ="life_renew_database"
-        ).addMigrations(Migrations.getMigrations()).build()
+        ).addMigrations(*Migrations.getMigrations()).build()
     }
 
     @Provides

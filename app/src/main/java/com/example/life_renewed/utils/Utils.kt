@@ -1,6 +1,5 @@
 package com.example.life_renewed.utils
 
-import android.icu.util.Calendar
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
@@ -13,15 +12,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.intl.Locale
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.life_renewed.R
-import com.example.life_renewed.navigation.NavScreens
 import java.time.LocalDate
+import java.time.LocalTime
 import java.time.format.DateTimeFormatter
-import kotlin.text.format
-import java.text.SimpleDateFormat
+import java.time.format.DateTimeParseException
 
 object Utils {
 
@@ -88,7 +85,7 @@ object Utils {
 //    }
 
 
-    /*
+    /**
         Returns the current date in the format "MM/dd/yyyy"
         ex: 12/25/2023
         @return String?
@@ -100,5 +97,41 @@ object Utils {
         return currentDate.format(formatter)
     }
 
+    /**
+    Compares a date string with today's date and returns a relative string.
+    @param dateString The date to compare, in "MM/dd/yyyy" format.
+    @return "today", "yesterday", or the original date string.
+     */
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun formatDateRelativeToToday(dateString: String?): String {
+        if (dateString == null) return "" // Or handle as an error
 
+        val formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy")
+        val today = LocalDate.now()
+        val yesterday = today.minusDays(1)
+
+        return try {
+            val parsedDate = LocalDate.parse(dateString, formatter)
+            when (parsedDate) {
+                today -> "Today"
+                yesterday -> "Yesterday"
+                else -> dateString
+            }
+        } catch (e: DateTimeParseException) {
+            // If the string is not in the expected format, return it as is.
+            dateString
+        }
+    }
+
+    /**
+        Returns the current time in the format "hh:mm a"
+        ex: 10:42 PM
+        @return String?
+     */
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getCurrentTime(): String? {
+        val currentTime = LocalTime.now()
+        val formatter = DateTimeFormatter.ofPattern("hh:mm a")
+        return currentTime.format(formatter)
+    }
 }

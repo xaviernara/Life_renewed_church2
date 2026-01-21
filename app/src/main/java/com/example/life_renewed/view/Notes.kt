@@ -82,7 +82,6 @@ class Notes {
                 }
 
                 error?.value?.isNotEmpty() == true -> {
-
                     Text(
                         text = error.value,
                         color = Color.Red,
@@ -91,7 +90,6 @@ class Notes {
                 }
 
                 notesList?.value?.isEmpty() == true -> {
-
                     Image(
                         painter = painterResource(R.drawable.ic_insert_note),
                         contentDescription = "Empty Notes"
@@ -115,7 +113,6 @@ class Notes {
                             Utils.TopBanner()
                         }
                         items(count = notesList?.value?.size ?: 0) { index ->
-
                             NotesItem(
                                 notesObject = notesList?.value?.get(index) ?: NotesObject(),
                                 navController = navController,
@@ -197,6 +194,7 @@ class Notes {
             Button Press Feedback: Ensure ripple effects are visible when buttons are pressed.
      */
 
+    @RequiresApi(Build.VERSION_CODES.O)
     @Composable
     fun NotesItem(
         notesObject: NotesObject,
@@ -204,7 +202,8 @@ class Notes {
         viewModel: LifeRenewViewModel
     ) {
 
-        val sermonTitle by remember { mutableStateOf(notesObject.sermonTitle + " " + notesObject.date) }
+        val dateTimeStamp = Utils.formatDateRelativeToToday(notesObject.date) + " " + (notesObject.timeStamp ?: " ")
+        val sermonTitle by remember { mutableStateOf(notesObject.sermonTitle + " " + dateTimeStamp) }
         val seriesTitle by remember { mutableStateOf(notesObject.seriesTitle) }
         var isExpanded by remember { mutableStateOf(false) }
         val size: Size by animateSizeAsState(
@@ -242,7 +241,7 @@ class Notes {
 //            shape = CardDefaults.elevatedShape
         ) {
             Text(
-                text = sermonTitle ?: "Sermon Title",
+                text = sermonTitle ?: stringResource(R.string.sermon_title),
                 fontWeight = FontWeight.Bold,
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.padding(horizontal = 10.dp),
@@ -251,7 +250,7 @@ class Notes {
 //                textAlign = TextAlign.Center
             )
             Text(
-                text = seriesTitle ?: "Series Title",
+                text = seriesTitle ?: stringResource(R.string.series_title),
                 modifier = Modifier.padding(horizontal = 10.dp),
                 overflow = TextOverflow.Ellipsis,
                 style = MaterialTheme.typography.bodySmall,
