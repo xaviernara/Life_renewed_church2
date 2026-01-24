@@ -73,7 +73,7 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
             val viewModel: LifeRenewViewModel by viewModels()
 
-            var allNotes = viewModel.allNotes.collectAsState()
+            val allNotes = viewModel.allNotes.collectAsState()
             val note = viewModel.note.collectAsState()
 
 

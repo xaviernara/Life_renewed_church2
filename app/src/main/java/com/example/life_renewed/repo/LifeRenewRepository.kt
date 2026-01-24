@@ -20,4 +20,5 @@ interface LifeRenewRepository {
 
     suspend fun getNotesById(id: Int): Flow<NotesObject>
 
+    suspend fun updateNotesInDB(notesObject: NotesObject)
 }

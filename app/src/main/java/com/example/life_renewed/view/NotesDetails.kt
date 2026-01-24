@@ -14,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults.colors
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -40,10 +41,11 @@ class NotesDetails {
         navController: NavHostController,
         viewModel: LifeRenewViewModel? = null
     ) {
+        val note = viewModel?.note?.collectAsState()
         //val noteTitle = navController.currentBackStackEntry?.arguments?.getString("noteTitle")
 //        var description = navController.currentBackStackEntry?.arguments?.getString("description")
-        var description by remember { mutableStateOf("") }
-        var title  by remember { mutableStateOf("") }
+        var description by remember { mutableStateOf(note?.value?.description.toString()) }
+        var title  by remember { mutableStateOf(note?.value?.sermonTitle.toString()) }
         var date by remember { mutableStateOf(Utils.getCurrentDate()) }
         val context = LocalContext.current
         val timeStamp by remember { mutableStateOf(Utils.getCurrentTime()) }
@@ -101,20 +103,30 @@ class NotesDetails {
 
             Button(
                 onClick = {
-                    val notesObject = NotesObject(
-                        sermonTitle = title,
-                        description = description,
-                        date = date.toString(),
-                        timeStamp = timeStamp.toString()
-                    )
+
+                    //need to add logic to check if note not from db
+                    // is either modified or new based on existing note
+
                     if(description.isEmpty()){
                         Toast.makeText(context, context.getString(R.string.note_empty), Toast.LENGTH_SHORT).show()
-                    }else{
-                        viewModel?.insertNotes(notesObject)
+                    } else {
+                        if(note?.value?.date != date && note?.value?.timeStamp != timeStamp){
+                            val notesObject = NotesObject(
+                                sermonTitle = title,
+                                description = description,
+                                date = date.toString(),
+                                timeStamp = timeStamp.toString()
+                            )
+                            viewModel?.insertNotes(notesObject)
+                        }
+
+
+
+
+
                         Toast.makeText(context, context.getString(R.string.note_saved), Toast.LENGTH_SHORT).show()
                     }
 //                    navController.navigateUp()
-
                 },
                 colors = ButtonDefaults.buttonColors(Color.Green),
                 modifier = Modifier.padding(vertical = 16.dp)

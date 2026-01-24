@@ -275,6 +275,7 @@ class Notes {
                         if (notesObject.description?.isEmpty() == true) {
                             Text(text = stringResource(R.string.add_notes))
                         } else {
+                            viewModel.getNotesById(notesObject.id)
                             Text(text = stringResource(R.string.edit_note))
                         }
                     }

@@ -41,4 +41,7 @@ class LifeRenewRepoImpl @Inject constructor(
         return notesDao.getNotesById(id)
     }
 
+    override suspend fun updateNotesInDB(notesObject: NotesObject) {
+        notesDao.updateNotes(notesObject)
+    }
 }
