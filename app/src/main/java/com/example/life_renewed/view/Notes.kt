@@ -1,7 +1,6 @@
 package com.example.life_renewed.view
 
 import android.content.res.Configuration
-import android.graphics.fonts.FontStyle
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.animation.animateContentSize
@@ -10,6 +9,7 @@ import androidx.compose.animation.core.animateSizeAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -45,7 +46,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
@@ -223,7 +223,9 @@ class Notes {
                 .clickable(
                     onClick = {
                         isExpanded = !isExpanded
-                    }
+                    },
+                    indication = rememberRipple(),
+                    interactionSource = remember { MutableInteractionSource() }
                 )
                 .shadow(
                     elevation = 20.dp,
@@ -247,7 +249,7 @@ class Notes {
                 modifier = Modifier.padding(horizontal = 10.dp),
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 1,
-//                textAlign = TextAlign.Center
+//                textAlign = TextAlign.center
             )
             Text(
                 text = seriesTitle ?: stringResource(R.string.series_title),
@@ -255,7 +257,7 @@ class Notes {
                 overflow = TextOverflow.Ellipsis,
                 style = MaterialTheme.typography.bodySmall,
                 maxLines = 1,
-//                textAlign = TextAlign.Center
+//                textAlign = TextAlign.center
             )
 
             if (isExpanded) {

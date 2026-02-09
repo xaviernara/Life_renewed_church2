@@ -38,30 +38,49 @@
 
 
     <array name="church_services">
-        <item name = "service_1">Sunday School 9:00 AM</item>
-        <item name = "service_2">Sunday\'s Corporate Prayer 10:30 AM</item>
-        <item name = "service_3">Sunday Morning Worship 10:45 AM</item>
-        <item name = "service_4">Stir Night Service (2nd &amp; 4th Sunday) 3:00 PM</item>
-        <item name = "service_5">Wednesday Night Bible Service 7:00 PM</item>
+        <item name="service_1">Sunday School 9:00 AM</item>
+        <item name="service_2">Sunday\'s Corporate Prayer 10:30 AM</item>
+        <item name="service_3">Sunday Morning Worship 10:45 AM</item>
+        <item name="service_4">Stir Night Service (2nd &amp; 4th Sunday) 3:00 PM</item>
+        <item name="service_5">Wednesday Night Bible Service 7:00 PM</item>
     </array>
 
     <array name="church_concretes">
-        <item name = "concrete_1">We believe the Bible to be the inspired and only infallible written Word of God.</item>
-        <item name = "concrete_2">We believe that there is only One God, eternally existent in three persons: God the Father, God the Son and, God the Holy Spirit. </item>
-        <item name = "concrete_3">We believe in the blessed Hope, which is the rapture of the Church of God, which is in Christ, at His return. </item>
-        <item name = "concrete_4">We believe that the only means of being cleansed from sin is through repentance and faith in the precious Blood of Jesus Christ. </item>
-        <item name = "concrete_5">We believe that regeneration by the Holy Ghost is absolutely essential for personal salvation. </item>
-        <item name = "concrete_6">We believe that the redemptive work of Christ on the Cross provides healing for the human body in answer to believing prayer. </item>
-        <item name = "concrete_7">We believe that the Baptism of the Holy Spirit, according to Acts 2:4, is given to believers who ask for it. </item>
-        <item name = "concrete_8">We believe in the sanctifying power of the Holy Spirit, by whose indwelling the Christian is enabled to live a holy and separated life in the present world.</item>
+        <item name="concrete_1">We believe the Bible to be the inspired and only infallible written
+            Word of God.
+        </item>
+        <item name="concrete_2">We believe that there is only One God, eternally existent in three
+            persons: God the Father, God the Son and, God the Holy Spirit.
+        </item>
+        <item name="concrete_3">We believe in the blessed Hope, which is the rapture of the Church
+            of God, which is in Christ, at His return.
+        </item>
+        <item name="concrete_4">We believe that the only means of being cleansed from sin is through
+            repentance and faith in the precious Blood of Jesus Christ.
+        </item>
+        <item name="concrete_5">We believe that regeneration by the Holy Ghost is absolutely
+            essential for personal salvation.
+        </item>
+        <item name="concrete_6">We believe that the redemptive work of Christ on the Cross provides
+            healing for the human body in answer to believing prayer.
+        </item>
+        <item name="concrete_7">We believe that the Baptism of the Holy Spirit, according to Acts
+            2:4, is given to believers who ask for it.
+        </item>
+        <item name="concrete_8">We believe in the sanctifying power of the Holy Spirit, by whose
+            indwelling the Christian is enabled to live a holy and separated life in the present
+            world.
+        </item>
     </array>
 
     <array name="about_screen_card_titles">
-        <item name = "title_1">Services</item>
-        <item name = "title_2">Our Vision</item>
-        <item name = "title_3">Our Mission</item>
-        <item name = "title_4">Church Concrete</item>
+        <item name="title_1">Services</item>
+        <item name="title_2">Our Vision</item>
+        <item name="title_3">Our Mission</item>
+        <item name="title_4">Church Concrete</item>
     </array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

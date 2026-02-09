@@ -48,6 +48,9 @@ dependencies {
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.compose.ui.viewbinding)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.material)
     val room_version = "2.7.0"
     // If this project uses any Kotlin source, use Kotlin Symbol Processing (KSP)
     // See Add the KSP plugin to your project

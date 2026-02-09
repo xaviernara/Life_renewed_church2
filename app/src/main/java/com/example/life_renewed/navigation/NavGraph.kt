@@ -4,9 +4,11 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.viewinterop.AndroidViewBinding
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.life_renewed.databinding.FragmentLinksBinding
 import com.example.life_renewed.view.About
 import com.example.life_renewed.view.Announcements
 import com.example.life_renewed.view.Bulletin
@@ -83,6 +85,9 @@ class NavGraph {
             }
             composable(NavScreens.NoteDetail.route) {
                 NotesDetails().NoteDetailScreen(navController = navController,viewModel = viewModel, modifier = modifier)
+            }
+            composable(NavScreens.Links.route) {
+                AndroidViewBinding(FragmentLinksBinding::inflate)
             }
         }
     }
